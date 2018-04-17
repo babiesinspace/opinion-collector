@@ -15,6 +15,14 @@
   </header>
 
   <div class="container">
+    <% if !@errors.nil? %>
+      <% @errors.each do |e| %>
+        <h5><%= e["message"] %></h5>
+      <% end %>    
+    <% end %>
+  </div>
+
+  <div class="container">
     <img id="street" src="streetfighter.jpg">
   </div>
 
@@ -24,14 +32,14 @@
         <img src="greed.jpg">
       </div>
       <div class="col-4">
-        <form>
+        <form action="/contact" method="POST">
         <div class="form-group">
           <label for="email_address">Email address</label>
-          <input type="email" class="form-control" id="email_address" placeholder="name@example.com">
+          <input type="email" class="form-control" name="email" id="email_address" placeholder="name@example.com">
         </div>
         <div class="form-group">
-          <label for="text_area">Example textarea</label>
-          <textarea class="form-control" id="text_area" rows="3"></textarea>
+          <label for="text_area">Opinion</label>
+          <textarea class="form-control" id="text_area" name="opinion" rows="3"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
